@@ -36,5 +36,6 @@ void decoding(std::vector<int> op)
         std::cout << current;
         if (!prev.empty()) {dict[code++] = prev + current[0];}
         prev = current;
+        if (code > 4095) {break;}
     }
 }
