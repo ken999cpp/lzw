@@ -18,7 +18,7 @@ std::vector<int> encoding(std::string s1)
     {
         if (code > 4095) {break;}
         std::string next = current + ch;
-        if (dict.find(next) != dict.end()) {current = next;}
+        if (dict.count(next)) {current = next;}
         else
         {
             res.push_back(dict[current]);
@@ -44,7 +44,7 @@ void decoding(std::vector<int> op)
     for (auto& c : op)
     {   
         if (code > 4095) {break;}
-        if (dict.find(c) != dict.end()) {current = dict[c];}
+        if (dict.count(c)) {current = dict[c];}
         else {current = prev + prev[0];}
         std::cout << current;
         if (!prev.empty()) {dict[code++] = prev + current[0];}
